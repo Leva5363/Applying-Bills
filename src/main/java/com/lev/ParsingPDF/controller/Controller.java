@@ -21,7 +21,8 @@ public class Controller {
     @Autowired
     ParsingPDFService parsingPDFService;
 
-    //TODO Fix return of the method
+    //TODO Fix method names
+
 
     @PostMapping("/file")
     public Bill getFile(@RequestBody MultipartFile file) throws IOException {
