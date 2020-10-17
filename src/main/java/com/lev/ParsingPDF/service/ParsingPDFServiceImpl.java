@@ -20,7 +20,8 @@ import java.nio.file.Paths;
 @Service
 public class ParsingPDFServiceImpl implements ParsingPDFService {
 //Why doesn't work Bill bill;(NullPointerException)
-    Bill bill= new Bill();
+    //TODO use lombock builder https://www.baeldung.com/lombok-builder
+//    Bill bill= new Bill();
 
 
     private final Path root = Paths.get("uploads");
