@@ -77,7 +77,9 @@ public class ParsingPDFServiceImpl implements ParsingPDFService {
         for(String ss:string ) {
             if (ss.contains("מספר חשבון חוזה")) {
                 long l = Long.parseLong(ss.replaceAll("\\D", ""));
+                //TODO replace to logging: https://www.baeldung.com/spring-boot-logging
                 System.out.println(l);
+
                 bill.setBillNumber(l);
 
                 res += ss + "\n";
@@ -105,8 +107,7 @@ public class ParsingPDFServiceImpl implements ParsingPDFService {
         }
 
 
-        //TODO: Create class Bill
-        // create specific field for him
+        //TODO DELETE all commented code
         //put all data to this class
         //return this object
 

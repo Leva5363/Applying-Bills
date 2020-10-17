@@ -8,6 +8,7 @@ import java.sql.Date;
 public class Bill {
     
     //TODO lombock : reduce code
+    //TODO separate filde date to date from and date to
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
