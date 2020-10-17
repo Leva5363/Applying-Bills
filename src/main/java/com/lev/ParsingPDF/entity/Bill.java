@@ -6,6 +6,9 @@ import java.sql.Date;
 
 @Entity
 public class Bill {
+    
+    //TODO lombock : reduce code
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
