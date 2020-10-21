@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public interface ParsingPDFService {
 
-    Bill parsingFile(MultipartFile file) throws IOException;
+    Bill fetchingInfoFromFile(MultipartFile file) throws IOException;
 
     void init();
 

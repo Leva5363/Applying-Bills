@@ -25,17 +25,17 @@ public class Controller {
 
 
     @PostMapping("/file")
-    public Bill getFile(@RequestBody MultipartFile file) throws IOException {
-        return parsingPDFService.parsingFile(file);
+    public Bill fetchingInfoFromFile(@RequestBody MultipartFile file) throws IOException {
+        return parsingPDFService.fetchingInfoFromFile(file);
     }
 
-    @PostMapping("/upload")
-    public List<Bill> getFile(@RequestParam("files") MultipartFile[] files) {
+    @PostMapping("/files")
+    public List<Bill> fetchingInfoFromFiles(@RequestParam("files") MultipartFile[] files) {
         ArrayList<Bill> listOfBills = new ArrayList<>();
         try {
             Arrays.asList(files).stream().forEach(file -> {
                 try {
-                    listOfBills.add(parsingPDFService.parsingFile(file));
+                    listOfBills.add(parsingPDFService.fetchingInfoFromFile(file));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
