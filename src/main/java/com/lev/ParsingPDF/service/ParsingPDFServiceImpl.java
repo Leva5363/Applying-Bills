@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 @Service
 public class ParsingPDFServiceImpl implements ParsingPDFService {
     Logger logger = LoggerFactory.getLogger(ParsingPDFServiceImpl.class);
-    Bill bill = new Bill();
+    Bill bill;
     private final Path root = Paths.get("uploads");
 
     @Override
@@ -51,33 +51,37 @@ public class ParsingPDFServiceImpl implements ParsingPDFService {
                 FilenameUtils.removeExtension(file.getOriginalFilename()) + ".txt"))){
             out.println(content);
         }
-
+        Long billNumber = 0l;
         String [] string = content.split("\n");
         for(String ss:string ) {
             if (ss.contains("מספר חשבון חוזה")) {
                 long l = Long.parseLong(ss.replaceAll("\\D", ""));
-                logger.info("NumberBill: ", l);
-                bill.setBillNumber(l);
+                logger.info("NumberBill: " + l);
+                billNumber = l;
                 break;
             }
         }
+        String tillDate = "";
+        String fromDate = "";
         for(String ss:string ) {
             if (ss.contains("מ- ")) {
                 String[] sss = ss.trim().split(" ");
-                bill.setTillDate(sss[4]);
-                bill.setFromDate(sss[1]);
+                tillDate = sss[4];
+                fromDate = sss[1];
                 break;
             }
         }
+        Double amount = 0.0;
         for(String ss:string ) {
             if (ss.contains("חסה\"כ לתשלום (ש\"ח)")) {
                 String [] sss= ss.trim().split(" ");
                 double d = Double.parseDouble(sss[0]);
-                bill.setAmount(d);
-                logger.info("Amount: ", d);
+                amount = d;
+                logger.info("Amount: " + d);
                 break;
             }
         }
+        bill = Bill.builder().billNumber(billNumber).fromDate(fromDate).tillDate(tillDate).amount(amount).build();
         return bill;
     }
 }

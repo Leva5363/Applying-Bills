@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Builder
 public class Bill {
 
     @Column(name = "billNumber")
