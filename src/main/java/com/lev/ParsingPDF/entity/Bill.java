@@ -1,23 +1,23 @@
 package com.lev.ParsingPDF.entity;
 
 import lombok.*;
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Entity
 @Builder
+@Document
 public class Bill {
 
-    @Column(name = "billNumber")
+    private String typeBill;
+
+    @Id
     private long billNumber;
 
-    @Column(name = "fromDate")
     private String fromDate;
 
-    @Column(name = "tillDate")
     private String tillDate;
 
-    @Column(name = "Amount")
     private double amount;
 
 }

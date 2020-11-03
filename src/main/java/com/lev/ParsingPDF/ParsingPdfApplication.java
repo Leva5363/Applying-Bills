@@ -1,16 +1,19 @@
 package com.lev.ParsingPDF;
 
 import com.lev.ParsingPDF.service.ParsingPDFService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+@Slf4j
 @SpringBootApplication
+@RequiredArgsConstructor
 public class ParsingPdfApplication implements CommandLineRunner {
 
-	@Autowired
-	ParsingPDFService parsingPDFService;
+	private final ParsingPDFService parsingPDFService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParsingPdfApplication.class, args);
@@ -22,3 +25,4 @@ public class ParsingPdfApplication implements CommandLineRunner {
 	}
 
 }
+
